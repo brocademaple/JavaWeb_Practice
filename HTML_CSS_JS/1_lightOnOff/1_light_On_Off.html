@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS-事件-案例-light_On_Off</title>
+</head>
+<body>
+
+    <img id="light" src="img/wolf.jpg"  alt="A wolf standing in the snow"> <br>
+
+    <input type="button" value="点亮" onclick="on()">
+    <input type="button"  value="熄灭" onclick="off()">
+
+    <br> <br>
+
+    <!-- 输入框聚焦→展示小写；输入框离焦，展示大写 -->
+    <input type="text" id="name" value="ITCAST" onfocus="lower()" onblur="upper()">
+    <br> <br>
+
+    <input type="checkbox" name="hobby"> 电影
+    <input type="checkbox" name="hobby"> 旅游
+    <input type="checkbox" name="hobby"> 游戏
+    <br>
+
+    <input type="button" value="全选" onclick="allCheck()">
+    <input type="button" value="反选" onclick="allReverse()">
+
+
+    <script>
+
+        // 切换图片-狼
+        function on() {
+            // 获取img元素对象
+            var img = document.getElementById("light");
+            // 设置src属性
+            img.src = "img/sheep.jpg"
+        }
+        
+        // 切换图片-羊
+        function off() {
+            // 获取img元素对象
+            var img = document.getElementById("light");
+            // 设置src属性
+            img.src = "img/wolf.jpg"
+        }
+
+        // 展示小写内容
+        function lower() {
+            // 获取输入框元素对象
+            var input = document.getElementById("name");
+            // 将值转为小写
+            input.value = input.value.toLowerCase();
+        }
+
+        // 展示大写内容
+        function upper() {
+            // 获取输入框元素对象
+            var input = document.getElementById("name");
+            // 将值转为小写
+            input.value = input.value.toUpperCase();
+        }
+
+        function allCheck() {
+            // 获取所有的复选框元素对象
+            var hobbys = document.getElementsByName("hobby");
+
+            // 设置选中状态
+            for (let i = 0; i < hobbys.length; i ++) {
+                const element = hobbys[i];
+                element.checked = true;
+            }
+        }
+
+        function allReverse() {
+            // 获取所有的复选框元素对象
+            var hobbys = document.getElementsByName("hobby");
+
+            // 设置选中状态
+            for (let i = 0; i < hobbys.length; i ++) {
+                const element = hobbys[i];
+                element.checked = false;
+            }
+        }
+    </script>
+</body>
+
+</html>
