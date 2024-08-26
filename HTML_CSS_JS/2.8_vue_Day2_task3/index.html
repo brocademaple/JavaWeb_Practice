@@ -1,0 +1,119 @@
+<!-- 点击 “改变标题内容” 按钮，需要将div中展示的标题内容替换为 “学员成绩表” -->
+<!-- 点击 “改变标题颜色” 按钮，需要将div中展示的标题内容以 红色 字体展示（字体保持原有大小，居中） -->
+<!-- 点击  “删除最后一行” 按钮，需要将表格中的最后一行数据删除掉，删除行可以调用tr这个DOM对象的remove()方法 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业3</title>
+</head>
+
+<body>
+    <div style="font-size: 30px; text-align: center;" id="tb1">课程表</div>
+    <table width="800px" border="1" cellspacing="0" align="center" id="myTable">
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>分数</th>
+            <th>评语</th>
+        </tr>
+        <tr align="center" class="data">
+            <td>001</td>
+            <td>张三</td>
+            <td>90</td>
+            <td>很优秀</td>
+        </tr>
+        <tr align="center" class="data">
+            <td>002</td>
+            <td>李四</td>
+            <td>92</td>
+            <td>优秀</td>
+        </tr>
+        <tr align="center" class="data">
+            <td>003</td>
+            <td>王五</td>
+            <td>83</td>
+            <td>很努力,不错</td>
+        </tr>
+        <tr align="center" class="data">
+            <td>004</td>
+            <td>赵六</td>
+            <td>98</td>
+            <td>666</td>
+        </tr>
+    </table>
+
+    <br>
+    
+    <div style="text-align: center;">
+        <input id="b1" type="button" value="改变标题内容" onclick="changeTitleContent()">
+        <input id="b2" type="button" value="改变标题颜色" onclick="changeTitleColor()">
+        <input id="b3" type="button" value="删除最后一行" onclick="deleteLastRow()">
+    </div>
+</body>
+
+<script>
+    //1. 点击 “改变标题内容” 按钮，需要将div中展示的标题内容替换为 “学员成绩表”
+    function changeTitleContent() {
+        var a = document.getElementById("tb1");
+        // a.innerHTML = "学员成绩表";  // 也可以，但是有可能被XSS攻击
+        a.textContent = "学员成绩表";
+    }
+    //2. 点击 “改变标题颜色” 按钮，需要将div中展示的标题内容以 红色 字体展示（字体保持原有大小，居中, 提示: 操作style属性控制css样式）
+    function changeTitleColor() {
+        var a = document.getElementById("tb1");
+        // a.innerHTML = "<font color='red' align='center'>学员成绩表</font>";
+        a.style.color = "red";
+        a.style.textAlign = "center";
+        a.style.fontSize = "30px";
+    }
+    //3. 点击  “删除最后一行” 按钮，需要将表格中的最后一行数据删除掉，删除行可以调用tr这个DOM对象的remove()方法
+    function deleteLastRow() {
+        // var a = document.getElementsByClassName("data");
+        // var table = document.querySelector("table");
+        // var lastRow = table.querySelector(".data.last-child");
+        /*for (let i = 0; i < a.length; i ++) {
+            if (i == a.length - 1) {
+                
+            }
+        }*/
+        // lastRow.remove();
+
+
+        // 用getElementById来完成这个函数
+        var table2 = document.getElementById('myTable');
+        var rows = table2.querySelectorAll(".data");  // 获取所有具有.data类的<tr>元素
+        var lastRow2 = rows[rows.length - 1]; // 获取最后一个tr元素
+        lastRow2.remove(); // 删除最后一个<tr>元素
+    }
+</script>
+
+</html>
+<!-- 
+1. 改变标题内容
+使用 textContent 属性来设置标题的内容，而不是 innerHTML。这样可以防止潜在的XSS攻击
+textContent是一个用于获取或设置一个结点及其子节点的文本内容的属性
+
+2. 改变标题颜色
+使用style属性来直接修改<div>元素的CSS样式
+
+3. 删除最后一行
+使用 querySelector 来选择最后一个具有 .data 类的 tr 元素，并使用 remove() 方法来移除该行
+
+使用 querySelector 方法来获取第一个匹配的选择器 "table" 的元素
+使用 querySelector 方法来获取表格中具有类名 "data" 的最后一个 <tr> 元素
+调用 remove 方法从DOM树中移除选定的 <tr> 元素，从而删除表格的最后一行
+
+
+
+
+关键知识点：
+1. DOM操作
+getElementById: 通过ID获取DOM元素。
+【】querySelector: 通过CSS选择器获取DOM元素。
+textContent: 获取或设置节点及其子节点的文本内容。
+style: 访问和修改元素的内联样式。
+remove: 从DOM树中移除一个元素
+-->

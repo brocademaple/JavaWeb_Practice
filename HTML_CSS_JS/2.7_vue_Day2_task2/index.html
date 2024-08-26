@@ -1,0 +1,43 @@
+<!-- 实现5秒之后，当前页面直接跳转到官网首页（首页地址 -->
+<!-- 5秒之后，才触发某一个动作 -->
+<!-- 跳转到某一个页面 ，可以使用 location 来设置 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业1</title>
+</head>
+<body>
+    <span id="time">5</span>秒之后跳转到官网首页
+    <script>
+        //实现5秒之后，跳转到官网页面
+
+        // 获取显示倒计时的元素
+        const timeElement = document.getElementById('time')
+
+        // 设置初始值为5秒
+        let countdown = 5;
+
+        // 每秒更新一次倒计时
+        const intervalId = setInterval(() => {
+            countdown --;
+            timeElement.textContent = countdown;
+
+            // 当倒计时结束，清除定时器并进行页面跳转
+            if (countdown === 0) {
+                clearInterval(intervalId);
+                location.href = "https://www.itcast.cn";  // 使用 location.href 来导航到新的页面
+            }
+        }, 1000)
+    </script>
+</body>
+</html>
+<!-- setInterval() 是一个内置函数，用于每隔一定时间执行指定的函数
+    在本例中，每隔1000ms/1s 执行一个匿名箭头函数 -->
+
+<!-- clearInterval(intervalId)
+    用于取消由setIntervalId创建的周期性调用 -->
+
+<!-- location.href  用于获取或设置当前文档的URL -->

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue-指令-v-if与v-show</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        年龄<input type="text" v-model="age">经判定,为:
+        <span v-if="age <= 35">年轻人(35及以下)</span>
+        <span v-else-if="age > 35 && age < 60">中年人(35-60)</span>
+        <span v-else>老年人(60及以上)</span>
+
+
+        <!-- 同样作用
+        年龄<input type="text" v-model="age">经判定,为:
+        <span v-show="age <= 35">年轻人(35及以下)</span>
+        <span v-show="age > 35 && age < 60">中年人(35-60)</span>
+        <span v-show="age >= 60">老年人(60及以上)</span>
+        -->
+        <br><br>
+    </div>
+</body>
+<script>
+    //定义Vue对象
+    new Vue({
+        el: "#app", //vue接管区域
+        data:{
+           age: 20
+        },
+        methods: {
+        }
+    })
+</script>
+</html>
+<!-- 
+    v-if和 v-show的区别
+    v-if指令，不满足条件的标签代码直接没了，
+    而v-show指令中，不满足条件的代码依然存在，只是添加了css样式来控制标签不去显示
+-->
