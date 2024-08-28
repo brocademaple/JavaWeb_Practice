@@ -1,0 +1,69 @@
+.header {
+     margin: 0 auto 0 auto;
+     width: 100%;
+     /* display: flex; */
+     /* background-color: black; */
+}
+
+.header ul {
+    background-color:#b5b76d;
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.header li {
+    display: inline;
+    margin: 10px;
+    text-align: center;
+    /* background-color: black; */
+
+}
+
+.header li a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#title {
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+    color: #81d1ff;
+}
+
+.row {
+    /* display: flex; */
+    justify-content: space-evenly;
+}
+
+.row p {
+    margin: 5px;
+}
+
+.row input {
+    margin: 0 auto;
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border-color:aquamarine;
+}
+
+#submit input{
+    width: 200px;
+    display: flex;
+    margin: 20px auto;
+    font-size: 25px;
+    border-radius: 5px;
+    border-color: cadetblue;
+}
+
+#submit input:hover {
+    /* 悬停颜色 */
+    background-color: aquamarine;
+    color: white;
+}

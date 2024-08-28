@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课内_JavaWeb_1.一个网页</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="header">
+        <ul>
+            <li>
+                <a href="https://www.xaut.edu.cn">首页</a>
+            </li>
+            <li>
+                <a href="https://www.xaut.edu.cn">商品分类</a>
+            </li>
+            <li>
+                <a href="https://www.xaut.edu.cn">热销</a>
+            </li>
+            <li>
+                <a href="https://www.xaut.edu.cn">新品</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="title">
+        <p>新用户注册</p>
+    </div>
+
+
+    <div class="row">
+        <p id="p1">用户名<span style="color:red";>*</span></p>
+        <input type="text" name="userName" placeholder="请输入用户名" onblur="onblurName()">
+    </div>
+        
+    <div class="row">
+        <p>邮箱<span style="color:red";>*</span></p>
+        <input type="email" name="email" placeholder="请输入邮箱">
+    </div> 
+        
+    <div class="row">
+        <p>密码<span style="color:red";>*</span></p>
+        <input type="password" name="passwd" placeholder="请输入密码">
+    </div>
+        
+    <div class="row">
+        <p>收货人</p>
+        <input type="text" name="receiver" placeholder="请输入收货电话">
+    </div>
+
+    <div class="row">
+        <p>收货地址</p>
+        <input type="text" name="receiveAddress" placeholder="请输入收货地址">
+    </div>
+
+    <!-- <div class="row6">
+        <p>用户名<span style="color:red";>*</span></p>
+        <input type="text" id="" placeholder="请输入用户名">
+    </div>
+
+    <div class="row7">
+        <p>用户名<span style="color:red";>*</span></p>
+        <input type="text" id="" placeholder="请输入用户名">
+    </div> -->
+    <div id="submit">
+        <input type="button" value="提交" onclick="show()">
+    </div>
+
+
+    <div id="showYourMessage">
+
+    </div>
+</body>
+</html>
