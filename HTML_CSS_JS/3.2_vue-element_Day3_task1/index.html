@@ -1,0 +1,156 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业01</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/axios-0.18.0.js"></script>
+</head>
+<body>
+    
+    需求: Vue挂载完成后,通过axios发送异步请求到服务端,或者学生列表数据,并通过Vue展示在页面上.
+    <div id="app">
+        <table border="1" cellspacing="0" width="80%">
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>图像</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>成绩</th>
+                <th>等级</th>
+            </tr>
+            <tr v-for="student in students" :key="student.id" align="center">
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td><img :src="student.image" height="50" width="70"></td>
+                <td>{{ student.age }}</td>
+                <td>
+                    <span v-if="student.gender === 1">男</span>
+                    <span v-else>女</span>
+                </td>
+                <td>{{ student.score }}</td>
+                <td>
+                    <span v-if="student.score >= 85" style="color: green;">优秀</span>
+                    <span v-else-if="student.score >= 60" style="color: yellow;">及格</span>
+                    <span v-else style="color: red;">不及格</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                students: []
+            },
+            mounted() {
+                axios.get('https://mock.apifox.cn/m1/3128855-0-default/student')
+                    .then(response => {
+                        if (response.data.code === 1) {
+                            this.students = response.data.data;
+                        } else {
+                            console.error('Failed to fetch student data');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching student data:', error);
+                    });
+            }
+        });
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业01</title>
+    <script src="js/vue.js"></script>
+    <script src="js/axios-0.18.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <table border="1" cellspacing="0" width="80%">
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>图像</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>成绩</th>
+                <th>等级</th>
+            </tr>
+            <tr v-for="student in students" :key="student.id" align="center">
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td><img :src="student.image" height="50" width="70"></td>
+                <td>{{ student.age }}</td>
+                <td>
+                    <span v-if="student.gender === 1">男</span>
+                    <span v-else>女</span>
+                </td>
+                <td>{{ student.score }}</td>
+                <td>
+                    <span v-if="student.score >= 85" style="color: green;">优秀</span>
+                    <span v-else-if="student.score >= 60" style="color: yellow;">及格</span>
+                    <span v-else style="color: red;">不及格</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                students: []
+            },
+            created() {
+                this.fetchStudents();
+            },
+            methods: {
+                fetchStudents() {
+                    axios.get('https://mock.apifox.cn/m1/3128855-0-default/student')
+                        .then(response => {
+                            this.students = response.data.data;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching students:", error);
+                        });
+                }
+            }
+        });
+    </script>
+</html>
+
+<!-- 
+两种方法
+ 
+1. created() 钩子
+
+Vue 生命周期钩子: Vue 提供了一系列生命周期钩子，
+这些钩子会在特定的时间点被触发。
+
+created 在 Vue 实例创建完成后立即被调用。
+此时，实例已完成以下步骤：初始化数据观察 (data 属性)、
+编译模板、事件回调等，但还未开始 DOM 渲染
+
+2. mounted() 钩子
+mounted 是另一个 Vue 生命周期钩子，
+它在 Vue 实例被挂载到 DOM 上后立即被调用。
+这意味着 DOM 已经渲染完毕
+
+使用 mounted 钩子发起数据请求可以保证数据已经就绪
+并且可以立即更新视图，这有助于避免潜在的布局重排问题
+
+
+-->
